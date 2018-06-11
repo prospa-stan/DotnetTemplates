@@ -9,6 +9,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProspaAspNetCoreApi", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProspaTemplates", "src\ProspaTemplates\ProspaTemplates.csproj", "{E583A9F5-ACCC-415C-9C80-6F962A0A3250}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solution items", "_solution items", "{F20104A9-33C7-47EE-AC34-27A69C7038FD}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		build.cake = build.cake
+		global.json = global.json
+		Prospa.ruleset = Prospa.ruleset
+		README.md = README.md
+		stylecop.json = stylecop.json
+		version.props = version.props
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
