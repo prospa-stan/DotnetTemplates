@@ -1,0 +1,18 @@
+﻿{
+  "author": "Prospa Engineering",
+  "classifications": [
+    "Prospa",
+    "AspNetCore",
+    "API"
+  ],
+  "name": "Prospa AspNetCore API",
+  "groupIdentity": "prospa",
+  "identity": "Prospa.AspNetCore.Api",
+  "shortName": "prospaapi",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "preferNameDirectory": true,
+  "sourceName": "ProspaAspNetCoreApi"  
+}

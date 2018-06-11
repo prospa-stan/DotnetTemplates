@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\build\common.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp2.1;net461</TargetFrameworks>
+    <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">netcoreapp2.1</TargetFrameworks>
+    <Description>dotnet new templates targeting Prospa libraries</Description>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <PackageType>Template</PackageType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prospa.Packaging" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\Templates\**\*.*" Exclude="**\bin\**\*.*;**\obj\**\*.*" Pack="true" PackagePath="content" />
+  </ItemGroup>
+
+</Project>
