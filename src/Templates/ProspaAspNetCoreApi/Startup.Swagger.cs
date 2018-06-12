@@ -8,7 +8,6 @@ using Prospa.Extensions.AspNetCore.Mvc.Versioning.Swagger.OperationFilters;
 using Prospa.Extensions.AspNetCore.Swagger;
 using Prospa.Extensions.AspNetCore.Swagger.OperationFilters;
 using Prospa.Extensions.AspNetCore.Swagger.SchemaFilters;
-using ProspaAspNetCoreApi;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
@@ -26,7 +25,7 @@ namespace Microsoft.AspNetCore.Builder
             services.AddSwaggerGen(
                 options =>
                 {
-                    var assembly = typeof(Startup).GetTypeInfo().Assembly;
+                    var assembly = typeof(StartupSwagger).GetTypeInfo().Assembly;
                     var assemblyDescription = assembly.GetCustomAttribute<AssemblyDescriptionAttribute>().Description;
                     var apiVersionDescriptionProvider = provider.GetRequiredService<IApiVersionDescriptionProvider>();
 
