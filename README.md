@@ -18,16 +18,11 @@ dotnet new list
 
 #### Create a new solution to add the project template to:
 
-```console
-mkdir MySolution
-cd MySolution
-dotnet new sln
-```
+See details [here](https://github.com/prospa-group/DotnetSolution)
 
 #### Create a new AspNetCore API using the template:
 
 ```console
-mkdir src
 cd src
 dotnet new prospaapi -n "MyNew.API"
 ```
