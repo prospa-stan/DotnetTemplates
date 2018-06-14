@@ -37,6 +37,7 @@ namespace ProspaAspNetCoreApi
                    .UseKestrel(options => options.AddServerHeader = false)
                    .UseContentRoot(Directory.GetCurrentDirectory())
                    .ConfigureDefaultAppConfiguration(args)
+                   .ConfigureDefaultMetrics()
                    .UseDefaultMetrics()
                    .UseSerilog()
                    .UseHealth()
