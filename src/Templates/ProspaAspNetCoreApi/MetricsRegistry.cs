@@ -12,7 +12,7 @@ namespace ProspaAspNetCoreApi
 {
     public static class MetricsRegistry
     {
-        public const string ContextName = "Sandox.Api";
+        public const string ContextName = "ProspaAspNetCoreApi";
         public const string EndpointKey = "67EC9975-1F83-4FF9-A7D9-B6C64B652361";
 
         public static readonly TimerOptions RandomTimer = new TimerOptions
