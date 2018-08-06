@@ -48,6 +48,8 @@ namespace ProspaAspNetCoreApi
             public const ForwardedHeaders ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.All;
         }
 
+        public const string EndpointKey = "67EC9975-1F83-4FF9-A7D9-B6C64B652361";
+
         public static class Versioning
         {
             public const string GroupNameFormat = "'v'V";
