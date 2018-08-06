@@ -25,7 +25,6 @@ namespace ProspaAspNetCoreApi
                .UseCorrelationId(new CorrelationIdOptions { UpdateTraceIdentifier = false })
                .UseForwardedHeaders(new ForwardedHeadersOptions { ForwardedHeaders = Constants.HttpHeaders.ForwardedHeaders })
                .UseDefaultSecurityHeaders(_hostingEnvironment)
-               .UseAuthorizationByPass()
                .UseAuthentication()
                .UseDefaultDiagnostics(_hostingEnvironment)
                .UseCors(Constants.Cors.AllowAny)

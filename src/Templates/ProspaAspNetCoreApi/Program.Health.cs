@@ -18,6 +18,12 @@ namespace ProspaAspNetCoreApi
 
         public static IWebHostBuilder ConfigureDefaultHealth(this IWebHostBuilder webHostBuilder, IMetrics metrics)
         {
+            webHostBuilder.ConfigureAppHealthHostingConfiguration(options =>
+            {
+                // Required by Prospa's Pingdom auto-registration.
+                options.PingEndpoint = "/api/ping";
+            });
+
             webHostBuilder.ConfigureHealthWithDefaults((context, builder) =>
             {
                 var slackOptions = new SlackHealthAlertOptions();
