@@ -24,7 +24,13 @@ See details [here](https://github.com/prospa-group/DotnetSolution)
 
 ```console
 cd src
-dotnet new prospaapi -n "MyNew.API"
+dotnet new prospaapi -n "MyNew.API" 
+--metricsHealthEndpointToken {The token allowing access to the metrics and health endpoints} 
+--hostedMetricsBaseUri {The Grafana hosted metrics base URI where metrics are flushed} 
+--hostedMetricsApiKeyStaging {The Grafana hosted metrics API Key to use for the staging environment} 
+--hostedMetricsApiKeyProduction {The Grafana hosted metrics API Key to use for the production environment} 
+--slackWebhookUrlStaging {The Slack Webhook URL for health check alerting for the staging environment} 
+--slackWebhookUrlProduction {The Slack Webhook URL for health check alerting for the production environment}
 ```
 
 #### Attach the API to the solution
