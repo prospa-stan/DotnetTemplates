@@ -13,7 +13,10 @@ namespace ProspaAspNetCoreApi
     {
         public static IWebHostBuilder UseDefaultMetrics(this IWebHostBuilder webHostBuilder)
         {
-            webHostBuilder.ConfigureServices((context, services) => services.AddSingleton<IStartupFilter>(new RequireKeyForMetricsAndHealthStartupFilter()));
+            webHostBuilder.ConfigureServices((context, services) =>
+            {
+                services.AddSingleton<IStartupFilter>(new RequireKeyForMetricsAndHealthStartupFilter(context.Configuration));
+            });
 
             webHostBuilder.UseMetrics();
 
