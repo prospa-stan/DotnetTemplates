@@ -16,45 +16,10 @@
   "preferNameDirectory": true,
   "sourceName": "ProspaAspNetCoreApi",
   "symbols": {
-    "metricsHealthEndpointToken": {
+    "keyvaultName": {
       "type": "parameter",
-      "replaces": "(metricsHealthEndpointToken)",
-      "description": "The token allowing access to the metrics and health endpoints",
-      "dataType": "guid",
-      "isRequired": true
-    },
-    "hostedMetricsBaseUri": {
-      "type": "parameter",
-      "replaces": "(hostedMetricsBaseUri)",
-      "description": "The Grafana hosted metrics base URI where metrics are flushed",
-      "dataType": "string",
-      "isRequired": true
-    },
-    "hostedMetricsApiKeyStaging": {
-      "type": "parameter",
-      "replaces": "(hostedMetricsApiKeyStaging)",
-      "description": "The Grafana hosted metrics API Key to use for the staging environment",
-      "dataType": "string",
-      "isRequired": true
-    },
-    "hostedMetricsApiKeyProduction": {
-      "type": "parameter",
-      "replaces": "(hostedMetricsApiKeyProduction)",
-      "description": "The Grafana hosted metrics API Key to use for the production environment",
-      "dataType": "string",
-      "isRequired": true
-    },
-    "slackWebhookUrlStaging": {
-      "type": "parameter",
-      "replaces": "(slackWebhookUrlStaging)",
-      "description": "The Slack Webhook URL for health check alerting for the staging environment",
-      "dataType": "string",
-      "isRequired": true
-    },
-    "slackWebhookUrlProduction": {
-      "type": "parameter",
-      "replaces": "(slackWebhookUrlProduction)",
-      "description": "The Slack Webhook URL for health check alerting for the production environment",
+      "replaces": "(keyvaultName)",
+      "description": "Keyvault name is required, don't include the environment prefix or use the DNS name. e.g. template-keyvault",
       "dataType": "string",
       "isRequired": true
     }

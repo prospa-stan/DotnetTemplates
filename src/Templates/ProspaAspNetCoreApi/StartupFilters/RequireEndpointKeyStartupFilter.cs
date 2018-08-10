@@ -49,8 +49,8 @@ namespace ProspaAspNetCoreApi.StartupFilters
 
         private static string ExtractToken(HttpContext context)
         {
-            return context.Request.QueryString.HasValue && context.Request.Query.ContainsKey(nameof(Constants.EndpointKey))
-                ? context.Request.Query[nameof(Constants.EndpointKey)]
+            return context.Request.QueryString.HasValue && context.Request.Query.ContainsKey("EndpointKey")
+                ? context.Request.Query["EndpointKey"]
                 : StringValues.Empty;
         }
     }
