@@ -90,8 +90,7 @@ namespace Microsoft.AspNetCore.Builder
             options.DescribeAllEnumsAsStrings();
             options.DescribeAllParametersInCamelCase();
             options.DescribeStringEnumsInCamelCase();
-            // Currently broken, package conflict with asp.net core static files https://github.com/domaindrivendev/Swashbuckle.AspNetCore/issues/438
-            // options.IncludeXmlCommentsIfExists(assembly);
+            options.IncludeXmlCommentsIfExists(assembly);
         }
 
         private static void AddDefaultSchemaFilters(SwaggerGenOptions options)
