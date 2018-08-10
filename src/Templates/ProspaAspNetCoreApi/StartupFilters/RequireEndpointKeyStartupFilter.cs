@@ -8,12 +8,12 @@ using Microsoft.Extensions.Primitives;
 
 namespace ProspaAspNetCoreApi.StartupFilters
 {
-    public class RequireKeyForMetricsAndHealthStartupFilter : IStartupFilter
+    public class RequireEndpointKeyStartupFilter : IStartupFilter
     {
-        private static readonly string[] Endpoints = { "/health", "/metrics", "/metrics-text", "/env" };
+        private static readonly string[] Endpoints = { "/health", "/metrics", "/metrics-text", "/env", "/docs" };
         private readonly IConfiguration _configuration;
 
-        public RequireKeyForMetricsAndHealthStartupFilter(IConfiguration configuration)
+        public RequireEndpointKeyStartupFilter(IConfiguration configuration)
         {
             _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
@@ -25,7 +25,7 @@ namespace ProspaAspNetCoreApi.StartupFilters
 
             void RequireSecretToMetricsAndHealth(IApplicationBuilder app)
             {
-                var token = _configuration.GetValue<string>("MetricsHealthEndpointToken");
+                var token = _configuration.GetValue<string>("EndpointToken");
 
                 app.Use(async (context, next2) =>
                 {
