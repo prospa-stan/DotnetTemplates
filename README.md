@@ -25,12 +25,7 @@ See details [here](https://github.com/prospa-group/DotnetSolution)
 ```console
 cd src
 dotnet new prospaapi -n "MyNew.API" 
---metricsHealthEndpointToken {The token allowing access to the metrics and health endpoints} 
---hostedMetricsBaseUri {The Grafana hosted metrics base URI where metrics are flushed} 
---hostedMetricsApiKeyStaging {The Grafana hosted metrics API Key to use for the staging environment} 
---hostedMetricsApiKeyProduction {The Grafana hosted metrics API Key to use for the production environment} 
---slackWebhookUrlStaging {The Slack Webhook URL for health check alerting for the staging environment} 
---slackWebhookUrlProduction {The Slack Webhook URL for health check alerting for the production environment}
+--keyvaultName {Keyvault name is required, don't include the environment prefix or use the DNS name. e.g. template-keyvault}
 ```
 
 #### Attach the API to the solution
@@ -39,6 +34,10 @@ dotnet new prospaapi -n "MyNew.API"
 cd ..
 dotnet sln add .\src\MyNew.API\MyNew.API.csproj
 ```
+
+> The template is configured to add secrets from Azure Keyvault using MSI. Before running the application you'll first need to either:
+> 1. Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) and then run `az login` OR
+> 2. Disable this by removing the `keyvaultName` key from `appsettings.{env}.json`
 
 ## How to Build
 
