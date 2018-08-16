@@ -1,9 +1,7 @@
 ﻿using App.Metrics;
 using App.Metrics.AspNetCore.Health;
 using App.Metrics.Health;
-using App.Metrics.Health.Reporting.Slack;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 
 namespace ProspaAspNetCoreApi
 {
@@ -26,11 +24,7 @@ namespace ProspaAspNetCoreApi
 
             webHostBuilder.ConfigureHealthWithDefaults((context, builder) =>
             {
-                var slackOptions = new SlackHealthAlertOptions();
-                context.Configuration.GetSection(nameof(SlackHealthAlertOptions)).Bind(slackOptions);
-
                 builder.Report.ToMetrics(metrics);
-                builder.Report.ToSlack(slackOptions);
             });
 
             return webHostBuilder;
