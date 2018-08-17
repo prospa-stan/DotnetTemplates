@@ -46,14 +46,14 @@ namespace ProspaAspNetCoreApi
         private static void AddDefaultAzureKeyVault(IConfigurationBuilder builder)
         {
             var builtConfig = builder.Build();
+            var keyvaultName = builtConfig.GetValue<string>("keyvaultName");
 
-            var keyVaultEndpoint = $"https://{Constants.Environments.Prefix()}{builtConfig.GetValue<string>("keyvaultName")}.vault.azure.net/";
-
-            if (string.IsNullOrEmpty(keyVaultEndpoint))
+            if (string.IsNullOrEmpty(keyvaultName))
             {
                 return;
             }
 
+            var keyVaultEndpoint = $"https://{Constants.Environments.Prefix()}{keyvaultName}.vault.azure.net/";
             var azureServiceTokenProvider = new AzureServiceTokenProvider();
             var keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
             builder.AddAzureKeyVault(keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
