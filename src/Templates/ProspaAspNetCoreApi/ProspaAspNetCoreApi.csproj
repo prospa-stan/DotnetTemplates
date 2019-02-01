@@ -3,7 +3,7 @@
   <Import Project="..\..\build\common.props" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <Description>ProspaAspNetCoreApi</Description>
     <PackageTags>prospa;aspnetcore;api</PackageTags>
   </PropertyGroup>
@@ -14,18 +14,18 @@
 
   <ItemGroup Label="Microsoft Package References">
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.4.0" />
-    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.AzureKeyVault" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup Label="Third Party Package References">
-    <PackageReference Include="App.Metrics" Version="3.0.0-alpha-0780" />
-    <PackageReference Include="App.Metrics.AspNetCore.Mvc" Version="3.0.0-alpha-0098" />
-    <PackageReference Include="App.Metrics.AspNetCore.Health" Version="2.1.0-alpha-0071" />
-    <PackageReference Include="App.Metrics.Reporting.GrafanaCloudHostedMetrics" Version="1.0.0-alpha-0014" />
-    <PackageReference Include="App.Metrics.Health.Reporting.Metrics" Version="2.1.0-alpha-0118" />
+    <PackageReference Include="App.Metrics" Version="3.0.0" />
+    <PackageReference Include="App.Metrics.AspNetCore.Mvc" Version="3.0.0" />
+    <PackageReference Include="App.Metrics.AspNetCore.Health" Version="2.1.0" />
+    <PackageReference Include="App.Metrics.Reporting.GrafanaCloudHostedMetrics" Version="1.0.0" />
+    <PackageReference Include="App.Metrics.Health.Reporting.Metrics" Version="2.1.0" />
     <PackageReference Include="CorrelationId" Version="2.1.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="7.6.104" />
     <PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.0.3" />
