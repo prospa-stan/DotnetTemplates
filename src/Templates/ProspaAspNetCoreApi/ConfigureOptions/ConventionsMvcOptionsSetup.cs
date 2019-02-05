@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Versioning;
 
 // ReSharper disable CheckNamespace
 namespace Microsoft.Extensions.Options
@@ -10,7 +9,6 @@ namespace Microsoft.Extensions.Options
         /// <inheritdoc />
         public void Configure(MvcOptions options)
         {
-            options.Conventions.Add(new ApiVersionConvention());
         }
     }
 }

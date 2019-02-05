@@ -48,7 +48,6 @@ namespace Microsoft.AspNetCore.Builder
                 {
                     options.PreSerializeFilters.Add((swagger, httpReq) =>
                     {
-                        swagger.Host = httpReq.Host.Value;
                         swagger.LowercaseRoutes();
                     });
                 });
