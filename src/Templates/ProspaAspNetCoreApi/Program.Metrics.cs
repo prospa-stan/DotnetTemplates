@@ -5,7 +5,7 @@ using App.Metrics.Reporting.GrafanaCloudHostedMetrics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ProspaAspNetCoreApi.StartupFilters;
+using Prospa.Extensions.AspNetCore.Mvc.Core.StartupFilters;
 
 namespace ProspaAspNetCoreApi
 {
@@ -15,7 +15,7 @@ namespace ProspaAspNetCoreApi
         {
             webHostBuilder.ConfigureServices((context, services) =>
             {
-                services.AddSingleton<IStartupFilter>(new RequireEndpointKeyStartupFilter(context.Configuration));
+                services.AddSingleton<IStartupFilter>(new RequireEndpointKeyStartupFilter(context.Configuration.GetValue<string>(Constants.Auth.EndpointKey)));
             });
 
             webHostBuilder.UseMetrics();

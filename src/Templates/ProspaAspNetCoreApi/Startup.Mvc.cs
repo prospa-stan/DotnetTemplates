@@ -45,9 +45,8 @@ namespace Microsoft.Extensions.DependencyInjection
 
         public static IMvcCoreBuilder AddDefaultVersionedApiExplorer(this IMvcCoreBuilder builder)
         {
-            builder
-                .AddApiExplorer()
-                .AddVersionedApiExplorer(options => options.GroupNameFormat = Constants.Versioning.GroupNameFormat);
+            builder.AddApiExplorer();
+            builder.Services.AddVersionedApiExplorer(options => options.GroupNameFormat = Constants.Versioning.GroupNameFormat);
 
             return builder;
         }

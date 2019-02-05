@@ -48,7 +48,7 @@ namespace ProspaAspNetCoreApi
             var builtConfig = builder.Build();
             var keyvaultName = builtConfig.GetValue<string>("keyvaultName");
 
-            if (string.IsNullOrEmpty(keyvaultName))
+            if (keyvaultName == null)
             {
                 return;
             }

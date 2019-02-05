@@ -25,7 +25,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             app.UseMiddleware<LogEnrichmentMiddleware>();
 
-            app.UseExceptionHandler("/error").WithConventions(x =>
+            app.UseExceptionHandler("/error").UseGlobalExceptionHandler(x =>
             {
                 x.HandleHttpValidationExceptions(hostingEnvironment);
                 x.HandleOperationCancelledExceptions(hostingEnvironment);

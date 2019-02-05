@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using Microsoft.AspNetCore.HttpOverrides;
 
 namespace ProspaAspNetCoreApi
@@ -9,6 +7,8 @@ namespace ProspaAspNetCoreApi
     {
         public static class Auth
         {
+            public const string EndpointKey = nameof(EndpointKey);
+
             public static class Policies
             {
                 public const string ReadPolicy = "Read";
