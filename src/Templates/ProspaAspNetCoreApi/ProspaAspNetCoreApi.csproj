@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Infrastructure\Health\" />
     <Folder Include="Properties\" />
   </ItemGroup>
 
