@@ -11,11 +11,7 @@ namespace ProspaAspNetCoreApi
     {
         public static int Main(string[] args)
         {
-            var metrics = AppMetrics.CreateDefaultBuilder().BuildDefaultMetrics();
-
-            var webHost = CreateWebHostBuilder(args, metrics).Build();
-
-            Log.Logger = webHost.CreateDefaultLogger(Constants.Environments.CurrentAspNetCoreEnv);
+            var webHost = CreateWebHostBuilder(args).Build();
 
             try
             {
@@ -34,16 +30,20 @@ namespace ProspaAspNetCoreApi
             }
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args, IMetricsRoot metrics) =>
-            WebHost.CreateDefaultBuilder(args)
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            var metrics = AppMetrics.CreateDefaultBuilder().BuildDefaultMetrics();
+
+            return WebHost.CreateDefaultBuilder(args)
                    .UseKestrel(options => options.AddServerHeader = false)
                    .UseContentRoot(Directory.GetCurrentDirectory())
                    .ConfigureDefaultAppConfiguration(args)
                    .ConfigureDefaultMetrics(metrics)
                    .ConfigureDefaultHealth(metrics)
-                   .UseSerilog()
+                   .UseSerilog(ProgramLogger.ConfigureLogger)
                    .UseDefaultMetrics()
                    .UseDefaultHealth()
                    .UseStartup<Startup>();
+        }
     }
 }
