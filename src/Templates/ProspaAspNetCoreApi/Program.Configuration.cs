@@ -35,10 +35,7 @@ namespace ProspaAspNetCoreApi
 
             AddDefaultAzureKeyVault(builder);
 
-            if (args != null)
-            {
-                builder.AddCommandLine(args);
-            }
+            builder.AddCommandLine(args);
 
             return builder;
         }

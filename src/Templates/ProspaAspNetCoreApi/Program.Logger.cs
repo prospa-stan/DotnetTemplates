@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Configuration;
 using Serilog.Events;
@@ -10,25 +11,22 @@ namespace ProspaAspNetCoreApi
 {
     public static class ProgramLogger
     {
-        public static ILogger CreateDefaultLogger(
-            this IWebHost webHost,
-            string environment)
+        public static void ConfigureLogger(WebHostBuilderContext context, LoggerConfiguration loggerConfiguration)
         {
-            var configuration = webHost.Services.GetRequiredService<IConfiguration>();
-            var loggerConfiguration = new LoggerConfiguration()
-                                      .ReadFrom
-                                      .Configuration(configuration)
-                                      .Enrich
-                                      .WithDefaults();
+            loggerConfiguration
+                .ReadFrom
+                .Configuration(context.Configuration)
+                .Enrich
+                .WithDefaults();
 
-            var seqServerUrl = configuration.GetValue<string>(Constants.ConfigurationKeys.Seq.SeqServerUrl);
+            var seqServerUrl = context.Configuration.GetValue<string>(Constants.ConfigurationKeys.Seq.SeqServerUrl);
 
             if (!string.IsNullOrWhiteSpace(seqServerUrl))
             {
                 loggerConfiguration.WriteTo.Seq(seqServerUrl);
             }
 
-            if (environment == Constants.Environments.Development)
+            if (Constants.Environments.IsDevelopment())
             {
                 loggerConfiguration.WriteTo.Console(theme: AnsiConsoleTheme.Literate);
             }
@@ -37,11 +35,9 @@ namespace ProspaAspNetCoreApi
                 loggerConfiguration
                     .WriteTo
                     .ApplicationInsightsTraces(
-                        configuration.GetValue<string>(Constants.ConfigurationKeys.AppInsights.InstrumentationKey),
+                        context.Configuration.GetValue<string>(Constants.ConfigurationKeys.AppInsights.InstrumentationKey),
                         restrictedToMinimumLevel: LogEventLevel.Error);
             }
-
-            return loggerConfiguration.CreateLogger();
         }
     }
 }
