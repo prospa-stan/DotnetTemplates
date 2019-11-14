@@ -6,11 +6,11 @@ using ProspaAspNetCoreApi.ConfigureOptions;
 
 // ReSharper disable CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
-    // ReSharper restore CheckNamespace
+// ReSharper restore CheckNamespace
 {
     public static class StartupValidation
     {
-        public static IMvcCoreBuilder AddDefaultValidation(this IMvcCoreBuilder builder)
+        public static IMvcBuilder AddDefaultValidation(this IMvcBuilder builder)
         {
             builder.AddFluentValidation(config => config.RegisterValidatorsFromAssemblyContaining<Startup>());
 

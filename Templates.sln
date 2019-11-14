@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27729.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{8AE0117B-6D84-42FC-9A7E-67C416960969}"
 EndProject
@@ -15,7 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solution items", "_solutio
 		.gitignore = .gitignore
 		azure-pipelines.yml = azure-pipelines.yml
 		build.cake = build.cake
-		global.json = global.json
 		Prospa.ruleset = Prospa.ruleset
 		README.md = README.md
 		stylecop.json = stylecop.json

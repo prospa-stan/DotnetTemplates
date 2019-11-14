@@ -8,7 +8,7 @@ using ProspaAspNetCoreApi.ConfigureOptions;
 
 // ReSharper disable CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
-    // ReSharper restore CheckNamespace
+// ReSharper restore CheckNamespace
 {
     public static class StartupMvc
     {
@@ -20,33 +20,9 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
-        public static IMvcCoreBuilder AddDefaultCors(this IMvcCoreBuilder builder)
-        {
-            builder.Services.AddSingleton<IConfigureOptions<CorsOptions>, CorsOptionsSetup>();
-            builder.AddCors();
-
-            return builder;
-        }
-
-        public static IMvcCoreBuilder AddDefaultJsonOptions(this IMvcCoreBuilder builder)
-        {
-            builder.Services.AddSingleton<IConfigureOptions<MvcJsonOptions>, JsonMvcOptionsSetup>();
-
-            return builder;
-        }
-
         public static IMvcCoreBuilder AddDefaultMvcOptions(this IMvcCoreBuilder builder)
         {
-            builder.SetCompatibilityVersion(CompatibilityVersion.Latest);
             builder.Services.AddSingleton<IConfigureOptions<MvcOptions>, FormattersMvcOptionsSetup>();
-
-            return builder;
-        }
-
-        public static IMvcCoreBuilder AddDefaultVersionedApiExplorer(this IMvcCoreBuilder builder)
-        {
-            builder.AddApiExplorer();
-            builder.Services.AddVersionedApiExplorer(options => options.GroupNameFormat = Constants.Versioning.GroupNameFormat);
 
             return builder;
         }

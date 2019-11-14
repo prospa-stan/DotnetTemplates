@@ -14,7 +14,7 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 
 // ReSharper disable CheckNamespace
 namespace Microsoft.AspNetCore.Builder
-    // ReSharper restore CheckNamespace
+// ReSharper restore CheckNamespace
 {
     public static class StartupSwagger
     {
@@ -86,9 +86,7 @@ namespace Microsoft.AspNetCore.Builder
         {
             options.IgnoreObsoleteActions();
             options.IgnoreObsoleteProperties();
-            options.DescribeAllEnumsAsStrings();
             options.DescribeAllParametersInCamelCase();
-            options.DescribeStringEnumsInCamelCase();
             options.IncludeXmlCommentsIfExists(assembly);
         }
 

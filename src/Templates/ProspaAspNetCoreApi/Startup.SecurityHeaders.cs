@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 using ProspaAspNetCoreApi;
 
 // ReSharper disable CheckNamespace
 namespace Microsoft.AspNetCore.Builder
-    // ReSharper restore CheckNamespace
+// ReSharper restore CheckNamespace
 {
     public static class StartupSecurityHeaders
     {
-        public static IApplicationBuilder UseDefaultSecurityHeaders(this IApplicationBuilder app, IHostingEnvironment hostingEnvironment)
+        public static IApplicationBuilder UseDefaultSecurityHeaders(this IApplicationBuilder app, IHostEnvironment hostingEnvironment)
         {
             if (!hostingEnvironment.IsDevelopment())
             {

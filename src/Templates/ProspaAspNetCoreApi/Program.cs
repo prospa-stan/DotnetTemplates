@@ -1,25 +1,21 @@
 ﻿using System;
-using System.IO;
-using App.Metrics;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Serilog;
 
 namespace ProspaAspNetCoreApi
 {
-    public sealed class Program
+    public partial class Program
     {
         public static int Main(string[] args)
         {
-            var metrics = AppMetrics.CreateDefaultBuilder().BuildDefaultMetrics();
-
-            var webHost = CreateWebHostBuilder(args, metrics).Build();
-
-            Log.Logger = webHost.CreateDefaultLogger(Constants.Environments.CurrentAspNetCoreEnv);
+            var host = CreateHostBuilder(args).Build();
 
             try
             {
-                webHost.Run();
+                host.Run();
 
                 return 0;
             }
@@ -34,16 +30,23 @@ namespace ProspaAspNetCoreApi
             }
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args, IMetricsRoot metrics) =>
-            WebHost.CreateDefaultBuilder(args)
-                   .UseKestrel(options => options.AddServerHeader = false)
-                   .UseContentRoot(Directory.GetCurrentDirectory())
-                   .ConfigureDefaultAppConfiguration(args)
-                   .ConfigureDefaultMetrics(metrics)
-                   .ConfigureDefaultHealth(metrics)
-                   .UseSerilog()
-                   .UseDefaultMetrics()
-                   .UseDefaultHealth()
-                   .UseStartup<Startup>();
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((context, builder) =>
+                {
+                    var keyVaultEndpoint = $"https://{Constants.Environments.Prefix()}{Constants.KeyVaultName}.vault.azure.net/";
+                    builder.AddAzureKeyVault(keyVaultEndpoint);
+                })
+                .UseSerilog(ConfigureLogger)
+                .ConfigureWebHostDefaults(webHostBuilder =>
+                {
+                    webHostBuilder
+                    .ConfigureKestrel(options =>
+                    {
+                        options.AddServerHeader = false;
+                        options.AllowSynchronousIO = true;
+                    })
+                    .UseStartup<Startup>();
+                });
     }
 }

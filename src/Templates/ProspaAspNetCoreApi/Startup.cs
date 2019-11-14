@@ -1,19 +1,22 @@
-﻿using System;
+﻿using System.Text.Json.Serialization;
 using CorrelationId;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
+using ProspaAspNetCoreApi.ConfigureOptions;
 
 namespace ProspaAspNetCoreApi
 {
-    public class Startup : IStartup
+    public class Startup
     {
         private readonly IConfiguration _configuration;
-        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IHostEnvironment _hostingEnvironment;
 
-        public Startup(IConfiguration configuration, IHostingEnvironment hostingEnvironment)
+        public Startup(IConfiguration configuration, IHostEnvironment hostingEnvironment)
         {
             _configuration = configuration;
             _hostingEnvironment = hostingEnvironment;
@@ -28,17 +31,22 @@ namespace ProspaAspNetCoreApi
                .UseAuthentication()
                .UseDefaultDiagnostics(_hostingEnvironment)
                .UseCors(Constants.Cors.AllowAny)
-               .UseMvc()
                .UseDefaultSwagger()
-               .UseDefaultSwaggerUi();
+               .UseDefaultSwaggerUi()
+               .UseEndpoints(endpoints =>
+               {
+                   // endpoints.Map("/api/ping", x => x.Response.Body = "pong")
+                   endpoints.MapHealthChecks("/health");
+                   endpoints.MapHealthChecks("/index");
+                   endpoints.MapHealthChecks("/api/ping");
+                   endpoints.MapControllers();
+               });
         }
 
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             AddCoreServices(services);
             AddApplicationServices(services);
-
-            return services.BuildServiceProvider();
         }
 
         private void AddApplicationServices(IServiceCollection services)
@@ -50,16 +58,17 @@ namespace ProspaAspNetCoreApi
         {
             services.AddCorrelationId();
 
-            services.AddMvcCore()
-                    .AddMetricsCore()
-                    .AddDefaultCors()
-                    .AddDefaultValidation()
-                    .AddDefaultVersionedApiExplorer()
-                    .AddAuthorization()
-                    .AddDataAnnotations()
-                    .AddJsonFormatters()
-                    .AddDefaultJsonOptions()
-                    .AddDefaultMvcOptions();
+            services.AddApplicationInsightsTelemetry();
+
+            services.AddControllersWithViews(mvcOptions =>
+            {
+            })
+                .SetCompatibilityVersion(CompatibilityVersion.Latest)
+                .AddJsonOptions(x => x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()))
+                .AddDefaultValidation();
+
+            services.AddSingleton<IConfigureOptions<CorsOptions>, CorsOptionsSetup>();
+            services.AddVersionedApiExplorer(options => options.GroupNameFormat = Constants.Versioning.GroupNameFormat);
 
             services
                 .AddRouting(options => options.LowercaseUrls = true)
