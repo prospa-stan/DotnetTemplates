@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 
 namespace ProspaAspNetCoreApi.Controllers.V1
 {
@@ -13,9 +14,9 @@ namespace ProspaAspNetCoreApi.Controllers.V1
     [ApiVersionNeutral]
     public class DocsController : ControllerBase
     {
-        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IHostEnvironment _hostingEnvironment;
 
-        public DocsController(IHostingEnvironment hostingEnvironment)
+        public DocsController(IHostEnvironment hostingEnvironment)
         {
             _hostingEnvironment = hostingEnvironment ?? throw new ArgumentNullException(nameof(hostingEnvironment));
         }

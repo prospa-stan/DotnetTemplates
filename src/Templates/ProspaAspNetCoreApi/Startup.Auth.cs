@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using System;
+using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -16,7 +17,7 @@ namespace ProspaAspNetCoreApi
             services.AddSingleton(provider => provider.GetRequiredService<IOptions<AuthOptions>>().Value);
 
             services.AddDefaultAuthorization();
-            services.AddDefaultAuthentication();
+            services.AddDefaultAuthentication(configuration);
 
             return services;
         }
@@ -24,17 +25,25 @@ namespace ProspaAspNetCoreApi
         public static IServiceCollection AddDefaultAuthorization(this IServiceCollection services)
         {
             services
-                .AddAuthorization()
                 .AddDefaultScopeAuthorization();
 
             return services;
         }
 
-        public static IServiceCollection AddDefaultAuthentication(this IServiceCollection services)
+        public static IServiceCollection AddDefaultAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
-            services
-                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddDefaultJwtBearer();
+            var authOptions = new AuthOptions();
+            configuration.GetSection(nameof(AuthOptions)).Bind(authOptions);
+
+            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                    .AddIdentityServerAuthentication(
+                options =>
+                {
+                    options.Authority = authOptions.Authority;
+                    options.ApiName = authOptions.Audience;
+                    options.SupportedTokens = SupportedTokens.Both;
+                    options.JwtValidationClockSkew = TimeSpan.FromSeconds(30);
+                });
 
             return services;
         }
@@ -45,14 +54,6 @@ namespace ProspaAspNetCoreApi
             services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 
             return services;
-        }
-
-        public static AuthenticationBuilder AddDefaultJwtBearer(this AuthenticationBuilder builder)
-        {
-            builder.Services.AddSingleton<IConfigureOptions<JwtBearerOptions>, JwtBearerOptionsSetup>();
-            builder.AddJwtBearer();
-
-            return builder;
         }
     }
 }

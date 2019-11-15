@@ -1,14 +1,13 @@
-﻿using GlobalExceptionHandler.WebApi;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Prospa.Extensions.AspNetCore.Http;
 using Prospa.Extensions.AspNetCore.Serilog;
 
 // ReSharper disable CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
-    // ReSharper restore CheckNamespace
+// ReSharper restore CheckNamespace
 {
     public static class StartupDiagnostics
     {
@@ -21,17 +20,9 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
-        public static IApplicationBuilder UseDefaultDiagnostics(this IApplicationBuilder app, IHostingEnvironment hostingEnvironment)
+        public static IApplicationBuilder UseDefaultDiagnostics(this IApplicationBuilder app, IHostEnvironment hostingEnvironment)
         {
             app.UseMiddleware<LogEnrichmentMiddleware>();
-
-            app.UseExceptionHandler("/error").UseGlobalExceptionHandler(x =>
-            {
-                x.HandleHttpValidationExceptions(hostingEnvironment);
-                x.HandleOperationCancelledExceptions(hostingEnvironment);
-                x.HandleUnauthorizedExceptions(hostingEnvironment);
-                x.HandleUnhandledExceptions(hostingEnvironment);
-            });
 
             return app;
         }
