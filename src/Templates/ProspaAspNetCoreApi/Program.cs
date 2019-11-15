@@ -16,7 +16,6 @@ namespace ProspaAspNetCoreApi
             try
             {
                 host.Run();
-
                 return 0;
             }
             catch (Exception ex)
@@ -34,19 +33,21 @@ namespace ProspaAspNetCoreApi
             Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((context, builder) =>
                 {
-                    var keyVaultEndpoint = $"https://{Constants.Environments.Prefix()}{Constants.KeyVaultName}.vault.azure.net/";
-                    builder.AddAzureKeyVault(keyVaultEndpoint);
+                    if (!string.IsNullOrEmpty(Constants.KeyVaultName))
+                    {
+                        var keyVaultEndpoint = $"https://{Constants.Environments.Prefix()}{Constants.KeyVaultName}.vault.azure.net/";
+                        builder.AddAzureKeyVault(keyVaultEndpoint);
+                    }
                 })
                 .UseSerilog(ConfigureLogger)
                 .ConfigureWebHostDefaults(webHostBuilder =>
                 {
                     webHostBuilder
-                    .ConfigureKestrel(options =>
-                    {
-                        options.AddServerHeader = false;
-                        options.AllowSynchronousIO = true;
-                    })
-                    .UseStartup<Startup>();
+                        .ConfigureKestrel(options =>
+                        {
+                            options.AddServerHeader = false;
+                        })
+                        .UseStartup<Startup>();
                 });
     }
 }

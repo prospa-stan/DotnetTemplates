@@ -17,7 +17,7 @@
 
   <ItemGroup Label="Third Party Package References">
     <PackageReference Include="CorrelationId" Version="2.1.0" />
-    <PackageReference Include="FluentValidation.AspNetCore" Version="8.1.3" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.5.1" />
     <PackageReference Include="NWebsec.AspNetCore.Middleware" Version="2.0.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
     <PackageReference Include="Serilog.Filters.Expressions" Version="2.0.0" />
@@ -33,8 +33,8 @@
   <ItemGroup Label="Prospa Package References">
     <PackageReference Include="Prospa.Extensions.AspNetCore.Authorization" Version="1.1.0-dev" />
     <PackageReference Include="Prospa.Extensions.AspNetCore.Serilog" Version="1.1.0-dev" />
-    <PackageReference Include="Prospa.Extensions.AspNetCore.Mvc.Versioning.Swagger" Version="1.1.0-dev" />
-    <PackageReference Include="Prospa.Extensions.AspNetCore.Swagger" Version="1.1.0-dev" />
+    <!--<PackageReference Include="Prospa.Extensions.AspNetCore.Mvc.Versioning.Swagger" Version="1.1.0-dev" />
+    <PackageReference Include="Prospa.Extensions.AspNetCore.Swagger" Version="1.1.0-dev" />-->
     <PackageReference Include="Prospa.Extensions.Serilog" Version="1.1.0-dev" />
   </ItemGroup>
 

@@ -24,7 +24,7 @@ namespace ProspaAspNetCoreApi
 
         public void Configure(IApplicationBuilder app)
         {
-            app.UseRequireHttps()
+            app
                .UseCorrelationId(new CorrelationIdOptions { UpdateTraceIdentifier = false })
                .UseForwardedHeaders(new ForwardedHeadersOptions { ForwardedHeaders = Constants.HttpHeaders.ForwardedHeaders })
                .UseDefaultSecurityHeaders(_hostingEnvironment)
@@ -33,6 +33,7 @@ namespace ProspaAspNetCoreApi
                .UseCors(Constants.Cors.AllowAny)
                .UseDefaultSwagger()
                .UseDefaultSwaggerUi()
+               .UseRouting()
                .UseEndpoints(endpoints =>
                {
                    // endpoints.Map("/api/ping", x => x.Response.Body = "pong")
@@ -58,9 +59,11 @@ namespace ProspaAspNetCoreApi
         {
             services.AddCorrelationId();
 
+            services.AddHealthChecks();
+
             services.AddApplicationInsightsTelemetry();
 
-            services.AddControllersWithViews(mvcOptions =>
+            services.AddControllers(mvcOptions =>
             {
             })
                 .SetCompatibilityVersion(CompatibilityVersion.Latest)
