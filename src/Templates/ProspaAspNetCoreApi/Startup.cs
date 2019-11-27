@@ -1,5 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 using CorrelationId;
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using ProspaAspNetCoreApi.ConfigureOptions;
+using ProspaAspNetCoreApi.Infrastructure;
 
 namespace ProspaAspNetCoreApi
 {
@@ -61,7 +63,8 @@ namespace ProspaAspNetCoreApi
 
             services.AddHealthChecks();
 
-            services.AddApplicationInsightsTelemetry();
+            services.AddApplicationInsightsTelemetry()
+                .AddSingleton<ITelemetryInitializer, ActivityTagTelemtryInitializer>();
 
             services.AddControllers(mvcOptions =>
             {

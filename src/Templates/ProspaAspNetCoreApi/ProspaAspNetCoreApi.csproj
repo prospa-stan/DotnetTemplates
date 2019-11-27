@@ -6,13 +6,14 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <Description>ProspaAspNetCoreApi</Description>
     <PackageTags>prospa;aspnetcore;api</PackageTags>
+    <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
   </PropertyGroup>
 
   <ItemGroup Label="Microsoft Package References">
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.8.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="4.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.AzureKeyVault" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.AzureKeyVault" Version="3.0.1" />
   </ItemGroup>
 
   <ItemGroup Label="Third Party Package References">
@@ -40,7 +41,7 @@
 
 
   <ItemGroup>
-    <PackageReference Update="StyleCop.Analyzers" Version="1.0.2" />
+    <PackageReference Update="StyleCop.Analyzers" Version="1.1.118" />
   </ItemGroup>
 
 </Project>

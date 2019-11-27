@@ -1,11 +1,12 @@
 ﻿using System;
 using Microsoft.AspNetCore.HttpOverrides;
+using static Microsoft.Extensions.Hosting.Environments;
 
 namespace ProspaAspNetCoreApi
 {
     public static class Constants
     {
-        public const string KeyVaultName = "";
+        public const string KeyVaultName = "(keyvaultName)";
 
         public static class Auth
         {
@@ -38,24 +39,21 @@ namespace ProspaAspNetCoreApi
 
         public static class Environments
         {
-            public const string Development = nameof(Development);
-            public const string Production = nameof(Production);
-            public const string Staging = nameof(Staging);
             public static readonly string CurrentAspNetCoreEnv = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
             public static string Prefix()
             {
-                if (IsDevelopment())
+                if (IsDevelopment)
                 {
                     return "demo-";
                 }
 
-                if (IsStaging())
+                if (IsStaging)
                 {
                     return "staging-";
                 }
 
-                if (IsProduction())
+                if (IsProduction)
                 {
                     return "live-";
                 }
@@ -63,11 +61,11 @@ namespace ProspaAspNetCoreApi
                 throw new ApplicationException("Invalid ASPNETCORE_ENVIRONMENT");
             }
 
-            public static bool IsDevelopment() { return CurrentAspNetCoreEnv == Development; }
+            public static bool IsDevelopment => CurrentAspNetCoreEnv == Development;
 
-            public static bool IsStaging() { return CurrentAspNetCoreEnv == Staging; }
+            public static bool IsStaging => CurrentAspNetCoreEnv == Staging;
 
-            public static bool IsProduction() { return CurrentAspNetCoreEnv == Production; }
+            public static bool IsProduction => CurrentAspNetCoreEnv == Production;
         }
 
         public static class HttpHeaders
