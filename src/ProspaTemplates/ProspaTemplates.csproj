@@ -17,5 +17,4 @@
   <ItemGroup>
     <None Include="..\Templates\**\*.*" Exclude="**\bin\**\*.*;**\obj\**\*.*" Pack="true" PackagePath="content" />
   </ItemGroup>
-
 </Project>
