@@ -36,6 +36,7 @@ namespace ProspaAspNetCoreApi
                .UseDefaultSwagger()
                .UseDefaultSwaggerUi()
                .UseRouting()
+               .UseAuthorization()
                .UseEndpoints(endpoints =>
                {
                    // endpoints.Map("/api/ping", x => x.Response.Body = "pong")

@@ -30,15 +30,13 @@
     <PackageReference Include="SerilogAnalyzer" Version="0.15.0" />
   </ItemGroup>
 
-
   <ItemGroup Label="Prospa Package References">
-    <PackageReference Include="Prospa.Extensions.AspNetCore.Authorization" Version="1.1.0-dev" />
-    <PackageReference Include="Prospa.Extensions.AspNetCore.Serilog" Version="1.1.0-dev" />
-    <!--<PackageReference Include="Prospa.Extensions.AspNetCore.Mvc.Versioning.Swagger" Version="1.1.0-dev" />
-    <PackageReference Include="Prospa.Extensions.AspNetCore.Swagger" Version="1.1.0-dev" />-->
-    <PackageReference Include="Prospa.Extensions.Serilog" Version="1.1.0-dev" />
+    <PackageReference Include="Prospa.Extensions.AspNetCore.Authorization" Version="2.0.0-*" />
+    <PackageReference Include="Prospa.Extensions.AspNetCore.Serilog" Version="2.0.0-*" />
+    <PackageReference Include="Prospa.Extensions.AspNetCore.Mvc.Versioning.Swagger" Version="2.0.0-*" />
+    <PackageReference Include="Prospa.Extensions.AspNetCore.Swagger" Version="2.0.0-*" />
+    <PackageReference Include="Prospa.Extensions.Serilog" Version="2.0.0-*" />
   </ItemGroup>
-
 
   <ItemGroup>
     <PackageReference Update="StyleCop.Analyzers" Version="1.1.118" />
