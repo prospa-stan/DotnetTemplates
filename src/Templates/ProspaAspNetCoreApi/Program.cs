@@ -36,7 +36,7 @@ namespace ProspaAspNetCoreApi
                     if (!string.IsNullOrEmpty(Constants.KeyVaultName))
                     {
                         var keyVaultEndpoint = $"https://{Constants.Environments.Prefix()}{Constants.KeyVaultName}.vault.azure.net/";
-                        // builder.AddAzureKeyVault(keyVaultEndpoint);
+                        builder.AddAzureKeyVault(keyVaultEndpoint);
                     }
                 })
                 .UseSerilog(ConfigureLogger)
