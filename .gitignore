@@ -7,7 +7,7 @@ TestResults/
 *.sln.ide/
 _ReSharper.*/
 packages/
-.artifacts/
+artifacts/
 PublishProfiles/
 .vs/
 bower_components/
@@ -46,3 +46,6 @@ Session/*
 Session.html
 tools/*
 !tools/packages.config
+tools/
+.dotnet
+feed/content/

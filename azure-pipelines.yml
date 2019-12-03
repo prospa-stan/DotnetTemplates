@@ -8,7 +8,7 @@ steps:
 - task: DotNetCoreInstaller@0
   inputs:
     packageType: 'sdk'
-    version: '2.2.101' 
+    version: '3.0.101' 
 
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
@@ -25,11 +25,3 @@ steps:
   condition: succeeded()
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-
-- task: DotNetCoreCLI@2
-  displayName: dotnet nuget push
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-  inputs:
-    command: custom
-    custom: nuget
-    arguments: push $(Build.ArtifactStagingDirectory)/**/*.nupkg --source https://api.nuget.org/v3/index.json --no-service-endpoint --api-key $(NugetApiKey)

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Prospa.Templates</id>
+        <authors>Prospa Engineering</authors>
+        <description>Prospa Templates</description>
+        <language>en-US</language>
+        <iconUrl>https://raw.githubusercontent.com/prospa-group/DotnetPackaging/master/prospa60x60.png</iconUrl>
+        <projectUrl>https://github.com/prospa-group-oss/DotnetTemplates</projectUrl>
+        <licenseUrl>https://github.com/prospa-group-oss/DotnetTemplates/blob/dev/LICENSE</licenseUrl>
+        <packageTypes>
+            <packageType name="Template"/>
+        </packageTypes>
+    </metadata>
+</package>
