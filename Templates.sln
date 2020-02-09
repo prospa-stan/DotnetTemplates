@@ -9,10 +9,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solution items", "_solutio
 		.gitignore = .gitignore
 		azure-pipelines.yml = azure-pipelines.yml
 		build.cake = build.cake
+		build.ps1 = build.ps1
+		build\common.props = build\common.props
+		global.json = global.json
 		Prospa.ruleset = Prospa.ruleset
 		README.md = README.md
 		stylecop.json = stylecop.json
-		build\common.props = build\common.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5BAD8595-FB2F-43E9-ADC9-3BE4169C996C}"
@@ -20,9 +22,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProspaAspNetCoreApi", "src\ProspaAspNetCoreApi\ProspaAspNetCoreApi.csproj", "{8EBB24B5-C8C0-408B-B317-DD9BA0CBF8A1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "feed", "feed", "{08C50464-CDCF-4B45-84A6-62222CBB5E73}"
-ProjectSection(SolutionItems) = preProject
-	feed\Prospa.Templates.nuspec = feed\Prospa.Templates.nuspec
-EndProjectSection
+	ProjectSection(SolutionItems) = preProject
+		feed\Prospa.Templates.nuspec = feed\Prospa.Templates.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

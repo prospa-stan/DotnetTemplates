@@ -5,7 +5,7 @@ var configuration   = Argument<string>("configuration", "Release");
 // GLOBAL VARIABLES
 ///////////////////////////////////////////////////////////////////////////////
 var buildArtifacts      = Directory("./artifacts/packages");
-var packageVersion      = "2.0.0";
+var packageVersion      = "3.1.0";
 
 ///////////////////////////////////////////////////////////////////////////////
 // Clean
@@ -33,8 +33,8 @@ Task("Build")
 
     var projects = GetFiles("./src/**/*.csproj");
     foreach(var project in projects)
-	{
-	    DotNetCoreBuild(project.GetDirectory().FullPath, settings);
+    {
+        DotNetCoreBuild(project.GetDirectory().FullPath, settings);
     }
 });
 
