@@ -1,25 +1,29 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27729.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{8AE0117B-6D84-42FC-9A7E-67C416960969}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProspaAspNetCoreApi", "src\Templates\ProspaAspNetCoreApi\ProspaAspNetCoreApi.csproj", "{1DA82AC9-88F1-4447-BC9A-64E18EC9A972}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProspaTemplates", "src\ProspaTemplates\ProspaTemplates.csproj", "{E583A9F5-ACCC-415C-9C80-6F962A0A3250}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solution items", "_solution items", "{F20104A9-33C7-47EE-AC34-27A69C7038FD}"
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		azure-pipelines.yml = azure-pipelines.yml
 		build.cake = build.cake
+		build.ps1 = build.ps1
+		build\common.props = build\common.props
 		global.json = global.json
 		Prospa.ruleset = Prospa.ruleset
 		README.md = README.md
 		stylecop.json = stylecop.json
-		version.props = version.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5BAD8595-FB2F-43E9-ADC9-3BE4169C996C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProspaAspNetCoreApi", "src\ProspaAspNetCoreApi\ProspaAspNetCoreApi.csproj", "{8EBB24B5-C8C0-408B-B317-DD9BA0CBF8A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "feed", "feed", "{08C50464-CDCF-4B45-84A6-62222CBB5E73}"
+	ProjectSection(SolutionItems) = preProject
+		feed\Prospa.Templates.nuspec = feed\Prospa.Templates.nuspec
 	EndProjectSection
 EndProject
 Global
@@ -28,20 +32,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1DA82AC9-88F1-4447-BC9A-64E18EC9A972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1DA82AC9-88F1-4447-BC9A-64E18EC9A972}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1DA82AC9-88F1-4447-BC9A-64E18EC9A972}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1DA82AC9-88F1-4447-BC9A-64E18EC9A972}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E583A9F5-ACCC-415C-9C80-6F962A0A3250}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E583A9F5-ACCC-415C-9C80-6F962A0A3250}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E583A9F5-ACCC-415C-9C80-6F962A0A3250}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E583A9F5-ACCC-415C-9C80-6F962A0A3250}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EBB24B5-C8C0-408B-B317-DD9BA0CBF8A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EBB24B5-C8C0-408B-B317-DD9BA0CBF8A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EBB24B5-C8C0-408B-B317-DD9BA0CBF8A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EBB24B5-C8C0-408B-B317-DD9BA0CBF8A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{1DA82AC9-88F1-4447-BC9A-64E18EC9A972} = {8AE0117B-6D84-42FC-9A7E-67C416960969}
+		{8EBB24B5-C8C0-408B-B317-DD9BA0CBF8A1} = {5BAD8595-FB2F-43E9-ADC9-3BE4169C996C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DED049E5-D157-498F-AEF9-6383519A687E}
