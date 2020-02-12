@@ -45,6 +45,16 @@ namespace ProspaAspNetCoreApi
                     options.JwtValidationClockSkew = TimeSpan.FromSeconds(30);
                 });
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(
+                        Constants.Auth.Policies.WritePolicy,
+                        policy =>
+                        {
+                            policy.RequireScope("write");
+                        });
+            });
+
             return services;
         }
 
