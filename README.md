@@ -8,7 +8,7 @@
 ## Install from Nuget
 
 ```console
-dotnet new --install ProspaTemplates::*
+dotnet new --install Prospa.Templates::*
 ```
 
 Confirm templates are installed:
@@ -50,7 +50,7 @@ dotnet sln add .\src\MyNew.API\MyNew.API.csproj
 ./build.ps1 -Target Local
 ```
 
-Package will be output to `/.artifacts/packages/ProspaTemplates.{version}.nupkg`
+Package will be output to `/.artifacts/packages/Prospa.Templates.{version}.nupkg`
 
 ## Test locally
 
@@ -59,14 +59,14 @@ After building the project, the templates can be installed using the following:
 ### Install
 
 ```console
-dotnet new -i <path to project>\.artifacts\packages\ProspaTemplates.{version}.nupkg
+dotnet new -i <path to project>\.artifacts\packages\Prospa.Templates.{version}.nupkg
 ```
 
 ### Re-Install
 
 ```console
-dotnet new -u ProspaTemplates
-dotnet new -i <path to project>\.artifacts\packages\ProspaTemplates.{version}.nupkg
+dotnet new -u Prospa.Templates
+dotnet new -i <path to project>\.artifacts\packages\Prospa.Templates.{version}.nupkg
 ```
 
 ### Install location
