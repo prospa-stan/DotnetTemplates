@@ -39,10 +39,6 @@ namespace ProspaAspNetCoreApi
                .UseAuthorization()
                .UseEndpoints(endpoints =>
                {
-                   // endpoints.Map("/api/ping", x => x.Response.Body = "pong")
-                   endpoints.MapHealthChecks("/health");
-                   endpoints.MapHealthChecks("/index");
-                   endpoints.MapHealthChecks("/api/ping");
                    endpoints.MapControllers();
                });
         }
@@ -67,9 +63,7 @@ namespace ProspaAspNetCoreApi
             services.AddApplicationInsightsTelemetry()
                 .AddSingleton<ITelemetryInitializer, ActivityTagTelemtryInitializer>();
 
-            services.AddControllers(mvcOptions =>
-            {
-            })
+            services.AddControllers()
                 .SetCompatibilityVersion(CompatibilityVersion.Latest)
                 .AddJsonOptions(x => x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()))
                 .AddDefaultValidation();
