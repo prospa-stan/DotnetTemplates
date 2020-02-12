@@ -6,7 +6,7 @@ using ProspaAspNetCoreApi.Routing;
 namespace ProspaAspNetCoreApi.Controllers.V1
 {
     [ApiController]
-    [V1, VersionedRoute("")]
+    [V1, VersionedRoute("[controller]")]
     public class SampleController : ControllerBase
     {
         [HttpGet(Name = "Get")]
@@ -19,7 +19,7 @@ namespace ProspaAspNetCoreApi.Controllers.V1
         [Authorize(Constants.Auth.Policies.WritePolicy)]
         [HttpPut]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
-        public ActionResult Post()
+        public ActionResult Put()
         {
             return Ok();
         }

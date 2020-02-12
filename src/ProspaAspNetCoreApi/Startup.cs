@@ -3,11 +3,13 @@ using CorrelationId;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Prospa.Extensions.AspNetCore.Mvc.Core.StartupFilters;
 using ProspaAspNetCoreApi.ConfigureOptions;
 using ProspaAspNetCoreApi.Infrastructure;
 

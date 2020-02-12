@@ -11,7 +11,7 @@ namespace ProspaAspNetCoreApi.Controllers.V1
         [HttpGet("api/ping")]
         public ActionResult ApiPing()
         {
-            return Ok();
+            return Ok("pong");
         }
 
         [HttpGet("ping")]
