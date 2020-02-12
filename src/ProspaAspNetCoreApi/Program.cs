@@ -1,7 +1,9 @@
 ﻿using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Prospa.Extensions.AspNetCore.Mvc.Core.StartupFilters;
 using Serilog;
 
 namespace ProspaAspNetCoreApi
@@ -42,9 +44,13 @@ namespace ProspaAspNetCoreApi
                 .ConfigureWebHostDefaults(webHostBuilder =>
                 {
                     webHostBuilder
-                        .ConfigureKestrel(options =>
+                        .ConfigureKestrel(options => { options.AddServerHeader = false; })
+                        .ConfigureServices((context, services) =>
                         {
-                            options.AddServerHeader = false;
+                            services.AddSingleton<IStartupFilter>(
+                                new RequireEndpointKeyStartupFilter(
+                                    new[] { "/health", "/metrics", "/metrics-text", "/env", "/docs" },
+                                context.Configuration.GetValue<string>(Constants.Auth.EndpointKey)));
                         })
                         .UseStartup<Startup>();
                 });

@@ -28,7 +28,7 @@ namespace ProspaAspNetCoreApi.Controllers.V1
         {
             var result = await _healthCheckService.CheckHealthAsync(_healthCheckOptions.Predicate, HttpContext.RequestAborted);
 
-            // Map status to response code - this is customizable via options. 
+            // Map status to response code - this is customizable via options.
             if (!_healthCheckOptions.ResultStatusCodes.TryGetValue(result.Status, out var statusCode))
             {
                 var message =

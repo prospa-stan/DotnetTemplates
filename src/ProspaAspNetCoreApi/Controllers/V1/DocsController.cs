@@ -21,7 +21,7 @@ namespace ProspaAspNetCoreApi.Controllers.V1
         }
 
         [HttpGet]
-        public Task Docs(string endpointKey)
+        public Task Docs()
         {
             var docs = System.IO.File.ReadAllText(_hostingEnvironment.ContentRootPath + "/docs.json");
 
