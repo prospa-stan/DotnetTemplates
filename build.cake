@@ -5,7 +5,7 @@ var configuration   = Argument<string>("configuration", "Release");
 // GLOBAL VARIABLES
 ///////////////////////////////////////////////////////////////////////////////
 var buildArtifacts      = Directory("./artifacts/packages");
-var packageVersion      = "3.1.0";
+var packageVersion      = "3.2.0";
 
 ///////////////////////////////////////////////////////////////////////////////
 // Clean
