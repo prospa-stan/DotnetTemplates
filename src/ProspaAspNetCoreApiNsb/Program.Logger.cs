@@ -24,7 +24,7 @@ namespace ProspaAspNetCoreApiNsb
 
         private static LoggerConfiguration SetLoggerConfiguration(LoggerConfiguration loggerConfiguration, IConfiguration configuration)
         {
-            loggerConfiguration = new LoggerConfiguration()
+            loggerConfiguration
                 .ReadFrom
                 .Configuration(configuration)
                 .Enrich

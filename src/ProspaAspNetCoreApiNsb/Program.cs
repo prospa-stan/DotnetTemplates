@@ -34,11 +34,7 @@ namespace ProspaAspNetCoreApiNsb
             Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((context, builder) =>
                 {
-                    if (!string.IsNullOrEmpty(Constants.KeyVaultName))
-                    {
-                        var keyVaultEndpoint = $"https://{Constants.Environments.Prefix()}{Constants.KeyVaultName}.vault.azure.net/";
-                        builder.AddAzureKeyVault(keyVaultEndpoint);
-                    }
+                    builder.AddDefaultSources(args);
                 })
                 .UseSerilog(ConfigureLogger)
                 .UseDefaultNServiceBus()
