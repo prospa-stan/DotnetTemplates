@@ -5,9 +5,9 @@
     "AspNetCore",
     "API"
   ],
-  "name": "Prospa AspNetCore API NServiceBus",
+  "name": "Prospa AspNetCore API - Azure, NServiceBus",
   "identity": "Prospa.AspNetCore.Api.Nsb",
-  "shortName": "prospaapinsb",
+  "shortName": "prospaapiazurensb",
   "tags": {
     "language": "C#",
     "type": "project"

@@ -5,9 +5,9 @@
     "AspNetCore",
     "API"
   ],
-  "name": "Prospa AspNetCore API",
+  "name": "Prospa AspNetCore API - Azure",
   "identity": "Prospa.AspNetCore.Api",
-  "shortName": "prospaapinsb",
+  "shortName": "prospaapiazure",
   "tags": {
     "language": "C#",
     "type": "project"
