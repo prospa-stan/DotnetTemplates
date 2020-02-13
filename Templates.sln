@@ -19,12 +19,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solution items", "_solutio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5BAD8595-FB2F-43E9-ADC9-3BE4169C996C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProspaAspNetCoreApi", "src\ProspaAspNetCoreApi\ProspaAspNetCoreApi.csproj", "{8EBB24B5-C8C0-408B-B317-DD9BA0CBF8A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProspaAspNetCoreApi", "src\ProspaAspNetCoreApi\ProspaAspNetCoreApi.csproj", "{8EBB24B5-C8C0-408B-B317-DD9BA0CBF8A1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "feed", "feed", "{08C50464-CDCF-4B45-84A6-62222CBB5E73}"
 	ProjectSection(SolutionItems) = preProject
 		feed\Prospa.Templates.nuspec = feed\Prospa.Templates.nuspec
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProspaAspNetCoreApiNsb", "src\ProspaAspNetCoreApiNsb\ProspaAspNetCoreApiNsb.csproj", "{0648699C-3D5E-4879-8A83-5ACA08B4D253}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,12 +38,17 @@ Global
 		{8EBB24B5-C8C0-408B-B317-DD9BA0CBF8A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EBB24B5-C8C0-408B-B317-DD9BA0CBF8A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EBB24B5-C8C0-408B-B317-DD9BA0CBF8A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0648699C-3D5E-4879-8A83-5ACA08B4D253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0648699C-3D5E-4879-8A83-5ACA08B4D253}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0648699C-3D5E-4879-8A83-5ACA08B4D253}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0648699C-3D5E-4879-8A83-5ACA08B4D253}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8EBB24B5-C8C0-408B-B317-DD9BA0CBF8A1} = {5BAD8595-FB2F-43E9-ADC9-3BE4169C996C}
+		{0648699C-3D5E-4879-8A83-5ACA08B4D253} = {5BAD8595-FB2F-43E9-ADC9-3BE4169C996C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DED049E5-D157-498F-AEF9-6383519A687E}

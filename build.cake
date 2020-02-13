@@ -5,7 +5,8 @@ var configuration   = Argument<string>("configuration", "Release");
 // GLOBAL VARIABLES
 ///////////////////////////////////////////////////////////////////////////////
 var buildArtifacts      = Directory("./artifacts/packages");
-var packageVersion      = "3.2.0";
+var feedDirectory       = Directory("./feed/content");
+var packageVersion      = "3.3.0";
 
 ///////////////////////////////////////////////////////////////////////////////
 // Clean
@@ -15,7 +16,9 @@ Task("Clean")
 {
     CleanDirectories(new DirectoryPath[] 
     {
-        buildArtifacts
+        buildArtifacts,
+        feedDirectory
+
     });
 });
 
@@ -49,7 +52,7 @@ Task("Copy")
 
     // copy the single csproj templates
     var files = GetFiles("./src/**/*.*");
-    CopyFiles(files, "./feed/content", true);
+    CopyFiles(files, feedDirectory, true);
 });
 
 ///////////////////////////////////////////////////////////////////////////////

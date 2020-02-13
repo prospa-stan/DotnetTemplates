@@ -5,16 +5,16 @@
     "AspNetCore",
     "API"
   ],
-  "name": "Prospa AspNetCore API",
-  "identity": "Prospa.AspNetCore.Api",
+  "name": "Prospa AspNetCore API NServiceBus",
+  "identity": "Prospa.AspNetCore.Api.Nsb",
   "shortName": "prospaapinsb",
   "tags": {
     "language": "C#",
     "type": "project"
   },
   "preferNameDirectory": true,
-  "sourceName": "ProspaAspNetCoreApi",
-  "primaryOutputs": [ { "path": "ProspaAspNetCoreApi.csproj" } ],
+  "sourceName": "ProspaAspNetCoreApiNsb",
+  "primaryOutputs": [ { "path": "ProspaAspNetCoreApiNsb.csproj" } ],
   "symbols": {
     "keyvaultName": {
       "type": "parameter",
