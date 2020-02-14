@@ -55,13 +55,21 @@ Task("Copy")
     CopyFiles(copyFiles, feedDirectory, true);
 
     // clean projects bin and obj folders, TODO: remove hard coded project name
-    DeleteDirectories(new DirectoryPath[] 
+    var cleanDirectories = new DirectoryPath[] 
     {
         "./feed/content/ProspaAspNetCoreApi/bin",
         "./feed/content/ProspaAspNetCoreApi/obj",
         "./feed/content/ProspaAspNetCoreApiNsb/bin",
         "./feed/content/ProspaAspNetCoreApiNsb/obj",
-    }, true);
+    };
+
+    foreach(var directory in cleanDirectories)
+    {
+        if (DirectoryExists(directory))
+        {
+            DeleteDirectory(directory, new DeleteDirectorySettings { Recursive = true, Force = true });
+        }
+    }
 });
 
 ///////////////////////////////////////////////////////////////////////////////
