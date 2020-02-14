@@ -8,6 +8,7 @@ using NServiceBus.Features;
 using NServiceBus.Logging;
 using NServiceBus.Serilog;
 using ProspaAspNetCoreApiNsb.Infrastructure;
+using V1.Commands;
 
 namespace ProspaAspNetCoreApiNsb
 {
@@ -56,7 +57,7 @@ namespace ProspaAspNetCoreApiNsb
                 transport.ConnectionString(connection.ToString);
 
                 var routing = transport.Routing();
-                // routing.RouteToEndpoint(typeof(EventType), "EndpointName");
+                RouteSampleCommands(routing);
 
                 var serilog = cfg.EnableSerilogTracing(logger);
                 serilog.EnableMessageTracing();
@@ -74,6 +75,18 @@ namespace ProspaAspNetCoreApiNsb
             }
 
             return endpointName;
+        }
+
+        private static void RouteSampleCommands(RoutingSettings<AzureServiceBusTransport> routing)
+        {
+            var endpointName = "TODO: Endpoint Name";
+
+            if (Constants.Environments.IsDevelopment)
+            {
+                endpointName += $".{Environment.MachineName}";
+            }
+
+            routing.RouteToEndpoint(typeof(SampleCommand), endpointName);
         }
     }
 }
