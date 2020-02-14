@@ -55,6 +55,6 @@ dotnet new -i <path to project>\.artifacts\packages\Prospa.Templates.{version}.n
 
 ## Versioning
 
-To version bump, edit the `VersionPrefix` and/or `VersionSuffix` in `./version.props`
+To version bump, edit the `packageVersion` in `build.cake`
 
-> When on non-release branches the `VersionSuffix` will always be set to `alpha` with the build number appended.
+> To restore your dotnet new list to factory defaults run `dotnet new --debug:reinit`

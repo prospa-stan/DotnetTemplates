@@ -51,8 +51,17 @@ Task("Copy")
     CreateDirectory("./feed/content");
 
     // copy the single csproj templates
-    var files = GetFiles("./src/**/*.*");
-    CopyFiles(files, feedDirectory, true);
+    var copyFiles = GetFiles("./src/**/*.*");
+    CopyFiles(copyFiles, feedDirectory, true);
+
+    // clean projects bin and obj folders, TODO: remove hard coded project name
+    DeleteDirectories(new DirectoryPath[] 
+    {
+        "./feed/content/ProspaAspNetCoreApi/bin",
+        "./feed/content/ProspaAspNetCoreApi/obj",
+        "./feed/content/ProspaAspNetCoreApiNsb/bin",
+        "./feed/content/ProspaAspNetCoreApiNsb/obj",
+    }, true);
 });
 
 ///////////////////////////////////////////////////////////////////////////////
