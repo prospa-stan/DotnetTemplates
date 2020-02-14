@@ -6,7 +6,7 @@ namespace ProspaAspNetCoreApi
 {
     public static class Constants
     {
-        public const string KeyVaultName = "(keyvaultName)";
+        public const string KeyVaultName = nameof(KeyVaultName);
 
         public static class Auth
         {

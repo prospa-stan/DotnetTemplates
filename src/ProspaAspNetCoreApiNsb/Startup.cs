@@ -27,20 +27,21 @@ namespace ProspaAspNetCoreApiNsb
         public void Configure(IApplicationBuilder app)
         {
             app
-               .UseCorrelationId(new CorrelationIdOptions { UpdateTraceIdentifier = false })
-               .UseForwardedHeaders(new ForwardedHeadersOptions { ForwardedHeaders = Constants.HttpHeaders.ForwardedHeaders })
-               .UseDefaultSecurityHeaders(_hostingEnvironment)
-               .UseAuthentication()
-               .UseDefaultDiagnostics(_hostingEnvironment)
-               .UseCors(Constants.Cors.AllowAny)
-               .UseDefaultSwagger()
-               .UseDefaultSwaggerUi()
-               .UseRouting()
-               .UseAuthorization()
-               .UseEndpoints(endpoints =>
-               {
+                .UseRequireHttps("/ping", "/api/ping")
+                .UseCorrelationId(new CorrelationIdOptions { UpdateTraceIdentifier = false })
+                .UseForwardedHeaders(new ForwardedHeadersOptions { ForwardedHeaders = Constants.HttpHeaders.ForwardedHeaders })
+                .UseDefaultSecurityHeaders(_hostingEnvironment)
+                .UseAuthentication()
+                .UseDefaultDiagnostics(_hostingEnvironment)
+                .UseCors(Constants.Cors.AllowAny)
+                .UseDefaultSwagger()
+                .UseDefaultSwaggerUi()
+                .UseRouting()
+                .UseAuthorization()
+                .UseEndpoints(endpoints =>
+                {
                    endpoints.MapControllers();
-               });
+                });
         }
 
         public void ConfigureServices(IServiceCollection services)

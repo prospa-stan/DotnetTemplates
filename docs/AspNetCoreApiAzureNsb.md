@@ -66,3 +66,7 @@ az keyvault create -n $keyvaultName -g $rg -l $location
 az keyvault secret set --vault-name $keyvaultName -n "EndpointKey" --value "secret"
 az keyvault secret set --vault-name $keyvaultName -n "ConnectionStrings--ServiceBus" --value $serviceBusConnectionString
 ```
+
+#### NServiceBus License
+
+Add the NServiceBus License to the root of the solution and add it as a linked item to the projected created.
