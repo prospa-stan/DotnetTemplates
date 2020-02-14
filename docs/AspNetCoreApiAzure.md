@@ -43,5 +43,5 @@ rg="demo-mygroupname-rg"
 keyvaultName="keyvaultName"
 az group create -l australiaeast -n $rg
 az keyvault create -n $keyvaultName -g $rg -l australiaeast
-az keyvault secret set --vault-name $$keyvaultName -n "EndpointKey" --value "secret"
+az keyvault secret set --vault-name $keyvaultName -n "EndpointKey" --value "secret"
 ```
