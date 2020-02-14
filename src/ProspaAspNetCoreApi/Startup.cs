@@ -60,7 +60,7 @@ namespace ProspaAspNetCoreApi
         {
             services.AddCorrelationId();
 
-            services.AddHealthChecks();
+            services.AddDefaultHealth();
 
             services.AddApplicationInsightsTelemetry()
                 .AddSingleton<ITelemetryInitializer, ActivityTagTelemtryInitializer>();

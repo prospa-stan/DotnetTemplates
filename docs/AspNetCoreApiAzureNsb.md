@@ -53,7 +53,7 @@ NServiceBus in the template is configured to use Azure Service Bus. To create an
 ```
 namespaceName="demo-myservicebusname-sb"
 az servicebus namespace create --resource-group $rg --name "demo-myservicebusname-sb" --location $location
-serviceBusConnectionString=$(az servicebus namespace authorization-rule keys list --g $rg --namespace-name $namespaceName --name RootManageSharedAccessKey --query primaryConnectionString --output tsv)
+serviceBusConnectionString=$(az servicebus namespace authorization-rule keys list -g $rg --namespace-name $namespaceName --name RootManageSharedAccessKey --query primaryConnectionString --output tsv)
 ```
 
 #### Configure Azure Keyvault

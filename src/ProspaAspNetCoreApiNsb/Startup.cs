@@ -28,6 +28,7 @@ namespace ProspaAspNetCoreApiNsb
         {
             app
                 .UseRequireHttps("/ping", "/api/ping")
+                .UseDefaultHealth()
                 .UseCorrelationId(new CorrelationIdOptions { UpdateTraceIdentifier = false })
                 .UseForwardedHeaders(new ForwardedHeadersOptions { ForwardedHeaders = Constants.HttpHeaders.ForwardedHeaders })
                 .UseDefaultSecurityHeaders(_hostingEnvironment)
@@ -59,7 +60,7 @@ namespace ProspaAspNetCoreApiNsb
         {
             services.AddCorrelationId();
 
-            services.AddHealthChecks();
+            services.AddDefaultHealth();
 
             services.AddApplicationInsightsTelemetry()
                 .AddSingleton<ITelemetryInitializer, ActivityTagTelemtryInitializer>();
