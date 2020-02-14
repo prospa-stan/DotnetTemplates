@@ -15,7 +15,7 @@ namespace ProspaAspNetCoreApiNsb
     {
         public static IHostBuilder UseDefaultNServiceBus(this IHostBuilder builder)
         {
-            builder.UseNServiceBus(context =>
+            return builder.UseNServiceBus(context =>
             {
                 var connectionString = context.Configuration.GetConnectionString(Constants.ConnectionStrings.ServiceBus);
 
@@ -31,7 +31,7 @@ namespace ProspaAspNetCoreApiNsb
                 factory.WithLogger(logger);
 
                 var endpointName = GetEndpointName();
-                var cfg = new EndpointConfiguration(GetEndpointName());
+                var cfg = new EndpointConfiguration(endpointName);
 
                 cfg.UseLicence(typeof(Program).Assembly);
                 cfg.SendFailedMessagesTo("error");
@@ -54,8 +54,8 @@ namespace ProspaAspNetCoreApiNsb
 
                 var transport = cfg.UseTransport<AzureServiceBusTransport>();
                 transport.ConnectionString(connection.ToString);
-                var routing = transport.Routing();
 
+                var routing = transport.Routing();
                 // routing.RouteToEndpoint(typeof(EventType), "EndpointName");
 
                 var serilog = cfg.EnableSerilogTracing(logger);
@@ -63,8 +63,6 @@ namespace ProspaAspNetCoreApiNsb
 
                 return cfg;
             });
-
-            return builder;
         }
 
         private static string GetEndpointName()

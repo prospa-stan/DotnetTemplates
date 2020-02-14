@@ -1,13 +1,13 @@
 {
   "profiles": {
-    "ProspaAspNetCoreApi-Development": {
+    "ProspaAspNetCoreApiNsb-Development": {
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "https://localhost:44300/"
     },
-    "ProspaAspNetCoreApi-Staging": {
+    "ProspaAspNetCoreApiNsb-Staging": {
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Staging"
