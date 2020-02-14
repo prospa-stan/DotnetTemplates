@@ -1,5 +1,19 @@
 ### AspNetCore API with NServiceBus Integration - Azure
 
+This template scaffolds an ASP.NET core API which standardises the following:
+- A health checks where the status is provided at `/health?EndpointKey=your-secret`
+- A a ping endpoint at `/ping`
+- OAuth2 for authorization
+- Swagger for API documentation
+- Azure Application Insights for application traces and telemtry
+- [Problem+Json](https://tools.ietf.org/html/rfc7807) for error responses
+- API versioning via URLs
+- Azure Keyvault for storing application secrets
+- OWASP recommended security headers
+- Request details logging on failed requests, including the ability to scrub sensitive request headers such as `Authorization` 
+- Log Enrichment middleware providing structured log entries which includes entries such `CorrelationId`, `ClientId`, `SubjectId`
+- Configures NServiceBus with Azure ServiceBus integration.
+
 #### Create a new solution to add the project template to:
 
 See details [here](https://github.com/prospa-group/DotnetSolution)
