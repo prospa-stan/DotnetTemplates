@@ -36,10 +36,12 @@ dotnet sln add .\src\MyNew.API\MyNew.API.csproj
 
 The template is configured to add Azure Keyvault as a configuration provider. You'll need to create the KeyVault resource for the application and use MSI to connect.
 
-1. Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) and then run `az login`
-2. Create a Resource Group
-	- `az group create -l australiaeast -n demo-mygroupname-rg`
-3. Create a Keyvault Resource using the same name as the Key Vault provided when creating the template proje
-	- `az keyvault create -n "keyvaultName" -g "demo-mygroup-rg" -l australiaeast`
-4. Set the required secrets in the KeyVault
-	- `az keyvault secret set --vault-name "keyvaultName" -n "EndpointKey" --value "secret"`
+Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) and then run `az login`
+
+```
+rg="demo-mygroupname-rg"
+keyvaultName="keyvaultName"
+az group create -l australiaeast -n $rg
+az keyvault create -n $keyvaultName -g $rg -l australiaeast
+az keyvault secret set --vault-name $$keyvaultName -n "EndpointKey" --value "secret"
+```
