@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Hosting;
 using ProspaAspNetCoreApiNsb;
 
 // ReSharper disable CheckNamespace
@@ -13,7 +12,6 @@ namespace Microsoft.AspNetCore.Builder
             if (!hostingEnvironment.IsDevelopment())
             {
                 app.UseHsts(options => options.MaxAge(days: Constants.HttpHeaders.HstsMaxAgeDays).IncludeSubdomains().Preload().AllResponses());
-                app.UseXfo(options => options.SameOrigin());
             }
 
             return app;
