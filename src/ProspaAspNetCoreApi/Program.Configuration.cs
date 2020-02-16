@@ -40,7 +40,7 @@ namespace ProspaAspNetCoreApi
             var keyVaultEndpoint = $"https://{Constants.Environments.Prefix()}{keyVaultName}.vault.azure.net/";
             var azureServiceTokenProvider = new AzureServiceTokenProvider();
             var keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
-            // builder.AddAzureKeyVault(keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+            builder.AddAzureKeyVault(keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
         }
     }
 }
