@@ -76,7 +76,7 @@ namespace ProspaAspNetCoreApi
             services
                 .AddRouting(options => options.LowercaseUrls = true)
                 .AddDefaultAuthenticationAndAuthorization(_configuration)
-                .AddDefaultApiVersioning()
+                .AddApiVersioning()
                 .AddDefaultContextAccessors()
                 .AddDefaultDiagnostics(_configuration)
                 .AddDefaultSwagger();
