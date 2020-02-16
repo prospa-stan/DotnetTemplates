@@ -1,10 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors.Infrastructure;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.Extensions.Options;
-using ProspaAspNetCoreApi;
-using ProspaAspNetCoreApi.ConfigureOptions;
 
 // ReSharper disable CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
@@ -18,13 +13,6 @@ namespace Microsoft.Extensions.DependencyInjection
                     .AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             return services;
-        }
-
-        public static IMvcCoreBuilder AddDefaultMvcOptions(this IMvcCoreBuilder builder)
-        {
-            builder.Services.AddSingleton<IConfigureOptions<MvcOptions>, FormattersMvcOptionsSetup>();
-
-            return builder;
         }
     }
 }
