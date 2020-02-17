@@ -24,8 +24,6 @@ namespace ProspaAspNetCoreApiNsb.Infrastructure
                         DateParseHandling = DateParseHandling.DateTimeOffset,
                         MaxDepth = DefaultMaxDepth,
                         ContractResolver = DefaultContractResolver,
-                        NullValueHandling = NullValueHandling.Ignore,
-                        MissingMemberHandling = MissingMemberHandling.Ignore,
                         Formatting = Formatting.Indented,
                         TypeNameHandling = TypeNameHandling.None
                     };
