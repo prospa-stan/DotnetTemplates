@@ -8,10 +8,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using ProspaAspNetCoreApi.ConfigureOptions;
-using ProspaAspNetCoreApi.Infrastructure;
+using ProspaAspNetCoreApiNsb.ConfigureOptions;
+using ProspaAspNetCoreApiNsb.Infrastructure;
 
-namespace ProspaAspNetCoreApi
+namespace ProspaAspNetCoreApiNsb
 {
     public class Startup
     {
@@ -72,6 +72,8 @@ namespace ProspaAspNetCoreApi
 
             services.AddSingleton<IConfigureOptions<CorsOptions>, CorsOptionsSetup>();
             services.AddVersionedApiExplorer(options => options.GroupNameFormat = Constants.Versioning.GroupNameFormat);
+
+            services.AddDefaultMediatr();
 
             services
                 .AddRouting(options => options.LowercaseUrls = true)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -6,17 +7,17 @@ using Microsoft.Extensions.Hosting;
 using Prospa.Extensions.AspNetCore.Mvc.Core.StartupFilters;
 using Serilog;
 
-namespace ProspaAspNetCoreApi
+namespace ProspaAspNetCoreApiNsb
 {
     public partial class Program
     {
-        public static int Main(string[] args)
+        public static async Task<int> Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
 
             try
             {
-                host.Run();
+                await host.RunAsync();
                 return 0;
             }
             catch (Exception ex)
@@ -37,6 +38,7 @@ namespace ProspaAspNetCoreApi
                     builder.AddDefaultSources(args);
                 })
                 .UseSerilog(ConfigureLogger)
+                .UseDefaultNServiceBus()
                 .ConfigureWebHostDefaults(webHostBuilder =>
                 {
                     webHostBuilder

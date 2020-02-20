@@ -6,7 +6,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
 using Microsoft.Net.Http.Headers;
 
-namespace ProspaAspNetCoreApi.Controllers.V1
+namespace ProspaAspNetCoreApiNsb.Controllers.V1
 {
     [Route("health")]
     [ApiExplorerSettings(IgnoreApi = true)]

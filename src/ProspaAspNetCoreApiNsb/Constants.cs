@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using static Microsoft.Extensions.Hosting.Environments;
 
-namespace ProspaAspNetCoreApi
+namespace ProspaAspNetCoreApiNsb
 {
     public static class Constants
     {
@@ -17,6 +17,11 @@ namespace ProspaAspNetCoreApi
                 public const string ReadPolicy = "Read";
                 public const string WritePolicy = "Write";
             }
+        }
+
+        public static class ConnectionStrings
+        {
+            public static readonly string ServiceBus = nameof(ServiceBus);
         }
 
         public static class ConfigurationKeys

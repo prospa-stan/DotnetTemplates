@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
-using ProspaAspNetCoreApi;
+using ProspaAspNetCoreApiNsb;
 
 // ReSharper disable CheckNamespace
 namespace Microsoft.AspNetCore.Builder

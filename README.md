@@ -19,30 +19,10 @@ dotnet new list
 
 ## Project Templates Included
 
-### AspNetCore API
-
-#### Create a new solution to add the project template to:
-
-See details [here](https://github.com/prospa-group/DotnetSolution)
-
-#### Create a new AspNetCore API using the template:
-
-```console
-cd src
-dotnet new prospaapi -n "MyNew.API" 
---keyvaultName {Keyvault name is required, don't include the environment prefix or use the DNS name. e.g. template-keyvault}
-```
-
-#### Attach the API to the solution
-
-```console
-cd ..
-dotnet sln add .\src\MyNew.API\MyNew.API.csproj
-```
-
-> The template is configured to add secrets from Azure Keyvault using MSI. Before running the application you'll first need to either:
-> 1. Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) and then run `az login` OR
-> 2. Disable this by removing the `keyvaultName` key from `appsettings.{env}.json`
+|Short Name|Description|
+|------|--------|
+|[prospaapiazure](docs/AspNetCoreApiAzure.md)|An ASP.NET Core Api targetted at hosting on Azure|
+|[prospaapiazurensb](docs/AspNetCoreApiAzureNsb.md)|An ASP.NET Core Api with NServiceBus integration targetted at hosting on Azure|
 
 ## How to Build
 
@@ -75,6 +55,6 @@ dotnet new -i <path to project>\.artifacts\packages\Prospa.Templates.{version}.n
 
 ## Versioning
 
-To version bump, edit the `VersionPrefix` and/or `VersionSuffix` in `./version.props`
+To version bump, edit the `packageVersion` in `build.cake`
 
-> When on non-release branches the `VersionSuffix` will always be set to `alpha` with the build number appended.
+> To restore your dotnet new list to factory defaults run `dotnet new --debug:reinit`

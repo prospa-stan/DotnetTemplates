@@ -5,7 +5,8 @@ var configuration   = Argument<string>("configuration", "Release");
 // GLOBAL VARIABLES
 ///////////////////////////////////////////////////////////////////////////////
 var buildArtifacts      = Directory("./artifacts/packages");
-var packageVersion      = "3.2.0";
+var feedDirectory       = Directory("./feed/content");
+var packageVersion      = "3.3.0";
 
 ///////////////////////////////////////////////////////////////////////////////
 // Clean
@@ -15,7 +16,9 @@ Task("Clean")
 {
     CleanDirectories(new DirectoryPath[] 
     {
-        buildArtifacts
+        buildArtifacts,
+        feedDirectory
+
     });
 });
 
@@ -48,8 +51,25 @@ Task("Copy")
     CreateDirectory("./feed/content");
 
     // copy the single csproj templates
-    var files = GetFiles("./src/**/*.*");
-    CopyFiles(files, "./feed/content", true);
+    var copyFiles = GetFiles("./src/**/*.*");
+    CopyFiles(copyFiles, feedDirectory, true);
+
+    // clean projects bin and obj folders, TODO: remove hard coded project name
+    var cleanDirectories = new DirectoryPath[] 
+    {
+        "./feed/content/ProspaAspNetCoreApi/bin",
+        "./feed/content/ProspaAspNetCoreApi/obj",
+        "./feed/content/ProspaAspNetCoreApiNsb/bin",
+        "./feed/content/ProspaAspNetCoreApiNsb/obj",
+    };
+
+    foreach(var directory in cleanDirectories)
+    {
+        if (DirectoryExists(directory))
+        {
+            DeleteDirectory(directory, new DeleteDirectorySettings { Recursive = true, Force = true });
+        }
+    }
 });
 
 ///////////////////////////////////////////////////////////////////////////////
