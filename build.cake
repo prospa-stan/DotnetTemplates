@@ -48,26 +48,23 @@ Task("Copy")
     .IsDependentOn("Clean")
     .Does(() =>
 {
-    CreateDirectory("./feed/content");
+    var contentDir = "./feed/content";
+    CreateDirectory(contentDir);
 
     // copy the single csproj templates
     var copyFiles = GetFiles("./src/**/*.*");
     CopyFiles(copyFiles, feedDirectory, true);
 
-    // clean projects bin and obj folders, TODO: remove hard coded project name
-    var cleanDirectories = new DirectoryPath[] 
-    {
-        "./feed/content/ProspaAspNetCoreApi/bin",
-        "./feed/content/ProspaAspNetCoreApi/obj",
-        "./feed/content/ProspaAspNetCoreApiNsb/bin",
-        "./feed/content/ProspaAspNetCoreApiNsb/obj",
-    };
+    var directoriesToClean = new[] { $"{contentDir}/**/bin", $"{contentDir}/**/obj" };
+    foreach(var dirPattern in directoriesToClean) {
+        var cleanDirectories = GetDirectories(dirPattern);
 
-    foreach(var directory in cleanDirectories)
-    {
-        if (DirectoryExists(directory))
+        foreach(var directory in cleanDirectories)
         {
-            DeleteDirectory(directory, new DeleteDirectorySettings { Recursive = true, Force = true });
+            if (DirectoryExists(directory))
+            {
+                DeleteDirectory(directory, new DeleteDirectorySettings { Recursive = true, Force = true });
+            }
         }
     }
 });
