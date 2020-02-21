@@ -52,7 +52,6 @@ namespace ProspaWorker
             return builder;
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Reliability", "CA2000:Dispose objects before losing scope", Justification = "This object can't be disposed")]
         private static void AddDefaultAzureKeyVault(IConfigurationBuilder builder, IHostEnvironment hostEnvironment)
         {
             var builtConfig = builder.Build();
@@ -64,9 +63,7 @@ namespace ProspaWorker
             }
 
             var keyVaultEndpoint = $"https://{Constants.Environment.Prefix(hostEnvironment)}{keyVaultName}.vault.azure.net/";
-            var azureServiceTokenProvider = new AzureServiceTokenProvider();
-            var keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
-            builder.AddAzureKeyVault(keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+            builder.AddAzureKeyVault(keyVaultEndpoint);
         }
     }
 }
