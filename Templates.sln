@@ -28,6 +28,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "feed", "feed", "{08C50464-C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProspaAspNetCoreApiNsb", "src\ProspaAspNetCoreApiNsb\ProspaAspNetCoreApiNsb.csproj", "{0648699C-3D5E-4879-8A83-5ACA08B4D253}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProspaWorker", "src\ProspaWorker\ProspaWorker.csproj", "{CEF527B8-6AEE-42C9-8EF1-3502F5E9075D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{0648699C-3D5E-4879-8A83-5ACA08B4D253}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0648699C-3D5E-4879-8A83-5ACA08B4D253}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0648699C-3D5E-4879-8A83-5ACA08B4D253}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEF527B8-6AEE-42C9-8EF1-3502F5E9075D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEF527B8-6AEE-42C9-8EF1-3502F5E9075D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEF527B8-6AEE-42C9-8EF1-3502F5E9075D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEF527B8-6AEE-42C9-8EF1-3502F5E9075D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +55,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8EBB24B5-C8C0-408B-B317-DD9BA0CBF8A1} = {5BAD8595-FB2F-43E9-ADC9-3BE4169C996C}
 		{0648699C-3D5E-4879-8A83-5ACA08B4D253} = {5BAD8595-FB2F-43E9-ADC9-3BE4169C996C}
+		{CEF527B8-6AEE-42C9-8EF1-3502F5E9075D} = {5BAD8595-FB2F-43E9-ADC9-3BE4169C996C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DED049E5-D157-498F-AEF9-6383519A687E}
