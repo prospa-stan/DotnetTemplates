@@ -23,11 +23,12 @@ dotnet new list
 |------|--------|
 |[prospaapiazure](docs/AspNetCoreApiAzure.md)|An ASP.NET Core Api targetted at hosting on Azure|
 |[prospaapiazurensb](docs/AspNetCoreApiAzureNsb.md)|An ASP.NET Core Api with NServiceBus integration targetted at hosting on Azure|
+|[prospaworker](docs/WorkerAzure.md)|A worker targetted at hosting on Azure|
 
 ## How to Build
 
 ```csharp
-./build.ps1 -Target Local
+./build.ps1
 ```
 
 Package will be output to `/.artifacts/packages/Prospa.Templates.{version}.nupkg`
