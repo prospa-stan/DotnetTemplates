@@ -3,22 +3,22 @@ using CorrelationId;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Prospa.Extensions.ApplicationInsights;
 using ProspaAspNetCoreApi.ConfigureOptions;
-using ProspaAspNetCoreApi.Infrastructure;
 
 namespace ProspaAspNetCoreApi
 {
     public class Startup
     {
         private readonly IConfiguration _configuration;
-        private readonly IHostEnvironment _hostingEnvironment;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public Startup(IConfiguration configuration, IHostEnvironment hostingEnvironment)
+        public Startup(IConfiguration configuration, IWebHostEnvironment hostingEnvironment)
         {
             _configuration = configuration;
             _hostingEnvironment = hostingEnvironment;
@@ -61,9 +61,6 @@ namespace ProspaAspNetCoreApi
             services.AddCorrelationId();
 
             services.AddDefaultHealth();
-
-            services.AddApplicationInsightsTelemetry()
-                .AddSingleton<ITelemetryInitializer, ActivityTagTelemtryInitializer>();
 
             services.AddControllers()
                 .SetCompatibilityVersion(CompatibilityVersion.Latest)
